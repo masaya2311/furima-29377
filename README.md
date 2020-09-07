@@ -47,7 +47,7 @@ Things you may want to cover:
 | ------ | ------ | ----------- |
 | name   | string | null: false |
 | explanation | text | null: false |
-| category |　integer | null: false |
+| category_id |　integer | null: false |
 | condition_id |　integer | null: false |
 | postage_id | integer | null: false |
 | area_id | integer | null: false |
