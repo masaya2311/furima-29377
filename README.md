@@ -45,9 +45,8 @@ Things you may want to cover:
 
 | Column | Type   | Options     |
 | ------ | ------ | ----------- |
-| image  |
-| item_name   | string | null: false |
-| item_explanation | text | null: false |
+| name   | string | null: false |
+| explanation | text | null: false |
 | category |　integer | null: false |
 | condition |　integer | null: false |
 | postage | integer | null: false |
@@ -57,8 +56,8 @@ Things you may want to cover:
 | user | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :users
-- has_one :purchasers
+- belongs_to :user
+- has_one :purchaser
 - has_one_attached :image
 
 ## purchasers テーブル
@@ -69,9 +68,9 @@ Things you may want to cover:
 | item   | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :users
-- belongs_to :items
-- has_one :addresses
+- belongs_to :user
+- belongs_to :item
+- has_one :address
 
 ## addresses テーブル
 
@@ -86,4 +85,4 @@ Things you may want to cover:
 | purchaser | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :purchasers
+- belongs_to :purchaser
