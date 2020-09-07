@@ -48,10 +48,10 @@ Things you may want to cover:
 | name   | string | null: false |
 | explanation | text | null: false |
 | category |　integer | null: false |
-| condition |　integer | null: false |
-| postage | integer | null: false |
-| area | integer | null: false |
-| delivery_time | integer | null: false |
+| condition_id |　integer | null: false |
+| postage_id | integer | null: false |
+| area_id | integer | null: false |
+| delivery_time_id | integer | null: false |
 | price | integer | null: false |
 | user | references | null: false, foreign_key: true |
 
@@ -77,7 +77,7 @@ Things you may want to cover:
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
 | post_code | string | null: false |
-| prefecture | integer | null: false |
+| prefecture_id | integer | null: false |
 | city | string | null: false |
 | address | string | null: false |
 | building_name | string | ||
