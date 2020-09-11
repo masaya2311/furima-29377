@@ -13,14 +13,13 @@ class User < ApplicationRecord
       validates :family_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ , message: 'is Full-width characters' } 
       validates :first_name_kana, format: { with: /\A[ァ-ヶー－]+\z/ , message: 'is Full-width characters' }
       validates :birthday
-  end
-       
-      # validates :email, presence: true, format: { with: /^([a-z -Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/ }
-      validates :password, presence: true, length: { minimum: 6 }
-
+      validates :password length: { minimum: 6 }
       VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-      validates :email, presence: true, length: { maximum: 255 },
+      validates :email, length: { maximum: 255 },
                         format: { with: VALID_EMAIL_REGEX }
-
-   
+  end
 end
+      
+      
+      
+      
