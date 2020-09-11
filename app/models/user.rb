@@ -8,7 +8,7 @@ class User < ApplicationRecord
         
   with_options presence: true do
       validates :nickname
-      
+
       VALID_FAMILY_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/
       validates :family_name, format: { with: VALID_FAMILY_NAME_REGEX, message: "is Full-width characters" }
 
@@ -23,7 +23,7 @@ class User < ApplicationRecord
 
       validates :birthday
 
-      validates :password length: { minimum: 6 }
+      validates :password, length: { minimum: 6 }
 
       VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
       validates :email, length: { maximum: 255 },
