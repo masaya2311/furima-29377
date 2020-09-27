@@ -10,6 +10,12 @@ RSpec.describe UserItem, type: :model do
       expect(@order).to be_valid
     end
 
+    it 'building_nameが空でも保存できること' do
+      @order.building_name = nil
+      @order.valid?
+      expect(@order).to be_valid
+    end
+
     it 'post_codeがないと保存できないこと' do
       @order.post_code = nil
       @order.valid?
@@ -22,10 +28,16 @@ RSpec.describe UserItem, type: :model do
       expect(@order.errors.full_messages).to include('Post code is invalid')
     end
 
-    it 'prefeture_idがと保存できないこと' do
+    it 'prefeture_idがないと保存できないこと' do
       @order.prefecture_id = nil
       @order.valid?
       expect(@order.errors.full_messages).to include("Prefecture can't be blank")
+    end
+
+    it 'prefeture_idが0だとと保存できないこと' do
+      @order.prefecture_id = 0
+      @order.valid?
+      expect(@order.errors.full_messages).to include("Prefecture must be other than 0")
     end
 
     it 'cityがないと保存できないこと' do

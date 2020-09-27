@@ -1,8 +1,11 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_item, only: [:index, :create, :move_to_index, :order_index]
   before_action :move_to_index
   before_action :order_index
+
   def index
-    @item = Item.find(params[:item_id])
+    #@item = Item.find(params[:item_id])
     @order = UserItem.new
   end
 
@@ -14,9 +17,13 @@ class OrdersController < ApplicationController
       @order.save
       redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
+      #@item = Item.find(params[:item_id])
       render :index
     end
+  end
+  
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 
   private
@@ -35,12 +42,16 @@ class OrdersController < ApplicationController
   end
 
   def move_to_index
-    @item = Item.find(params[:item_id])
-    redirect_to root_path if user_signed_in? && current_user.id == @item.user_id
+    #@item = Item.find(params[:item_id])
+     if user_signed_in? && current_user.id == @item.user_id
+        redirect_to root_path
+     end
   end
 
   def order_index
-    @item = Item.find(params[:item_id])
-    redirect_to root_path unless @item.order.nil?
+    #@item = Item.find(params[:item_id])
+      unless @item.order.nil?
+        redirect_to root_path
+      end
   end
 end
