@@ -5,19 +5,16 @@ class OrdersController < ApplicationController
   before_action :order_index
 
   def index
-    #@item = Item.find(params[:item_id])
     @order = UserItem.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order = UserItem.new(order_params)
     if @order.valid?
       pay_item
       @order.save
       redirect_to root_path
     else
-      #@item = Item.find(params[:item_id])
       render :index
     end
   end
@@ -42,14 +39,12 @@ class OrdersController < ApplicationController
   end
 
   def move_to_index
-    #@item = Item.find(params[:item_id])
      if user_signed_in? && current_user.id == @item.user_id
         redirect_to root_path
      end
   end
 
   def order_index
-    #@item = Item.find(params[:item_id])
       unless @item.order.nil?
         redirect_to root_path
       end
