@@ -10,16 +10,16 @@ class User < ApplicationRecord
     validates :nickname
 
     VALID_FAMILY_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze
-    validates :family_name, format: { with: VALID_FAMILY_NAME_REGEX, message: 'is Full-width characters' }
+    validates :family_name, format: { with: VALID_FAMILY_NAME_REGEX, message: 'は全角で入力してください' }
 
     VALID_FIRST_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/.freeze
-    validates :first_name, format: { with: VALID_FIRST_NAME_REGEX, message: 'is Full-width characters' }
+    validates :first_name, format: { with: VALID_FIRST_NAME_REGEX, message: 'は全角で入力してください' }
 
     VALID_FAMILY_NAME_KANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
-    validates :family_name_kana, format: { with: VALID_FAMILY_NAME_KANA_REGEX, message: 'is Full-width characters' }
+    validates :family_name_kana, format: { with: VALID_FAMILY_NAME_KANA_REGEX, message: 'は全角カタカナで入力してください' }
 
     VALID_FIRST_NAME_KANA_REGEX = /\A[ァ-ヶー－]+\z/.freeze
-    validates :first_name_kana, format: { with: VALID_FIRST_NAME_KANA_REGEX, message: 'is Full-width characters' }
+    validates :first_name_kana, format: { with: VALID_FIRST_NAME_KANA_REGEX, message: 'は全角カタカナで入力してください' }
 
     validates :birthday
 

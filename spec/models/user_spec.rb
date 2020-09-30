@@ -13,94 +13,94 @@ RSpec.describe User, type: :model do
     it 'nicknameが空だと保存できないこと' do
       @user.nickname = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("Nickname can't be blank")
+      expect(@user.errors.full_messages).to include("ニックネームを入力してください")
     end
 
     it 'emailが空だと保存できないこと' do
       @user.email = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("Email can't be blank")
+      expect(@user.errors.full_messages).to include("メールアドレスを入力してください")
     end
 
     it '同じemailが存在している場合登録できないこと' do
       @user.save
       another_user = FactoryBot.build(:user, email: @user.email)
       another_user.valid?
-      expect(another_user.errors.full_messages).to include('Email has already been taken')
+      expect(another_user.errors.full_messages).to include('メールアドレスはすでに存在します')
     end
 
     it 'passwordが空だと保存できないこと' do
       @user.password = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password can't be blank")
+      expect(@user.errors.full_messages).to include("パスワードを入力してください")
     end
 
     it 'passwordが存在してもpassword_confirmationがないと保存できない' do
       @user.password = '123asd'
       @user.password_confirmation = ''
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      expect(@user.errors.full_messages).to include("パスワード（確認用）とパスワードの入力が一致しません")
     end
 
     it 'passwordが5文字以下では保存できないこと、passwordが英数字でない場合は保存できないこと' do
       @user.password = '123'
       # @user.password_confirmation = "123"
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password", 'Password is too short (minimum is 6 characters)')
+      expect(@user.errors.full_messages).to include("パスワードは6文字以上で入力してください")
     end
 
     it 'family_nameが空だと保存できないこと' do
       @user.family_name = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("Family name can't be blank")
+      expect(@user.errors.full_messages).to include("苗字を入力してください")
     end
 
     it 'family_nameが全角でない場合保存できないこと' do
       @user.family_name = 'ｱﾍﾞ'
       @user.valid?
-      expect(@user.errors.full_messages).to include('Family name is Full-width characters')
+      expect(@user.errors.full_messages).to include('苗字は全角で入力してください')
     end
 
     it 'first_nameが空だと保存できないこと' do
       @user.first_name = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("First name can't be blank")
+      expect(@user.errors.full_messages).to include("名前を入力してください")
     end
 
     it 'first_nameが全角でないと保存できないこと' do
       @user.first_name = 'ｱ'
       @user.valid?
-      expect(@user.errors.full_messages).to include('First name is Full-width characters')
+      expect(@user.errors.full_messages).to include('名前は全角で入力してください')
     end
 
     it 'family_name_kanaが空だと保存できないこと' do
       @user.family_name_kana = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("Family name kana can't be blank")
+      expect(@user.errors.full_messages).to include("苗字は全角カタカナで入力してください")
     end
 
     it 'family_name_kanaが全角でないと保存できないこと' do
       @user.family_name_kana = 'ｱﾍﾞ'
       @user.valid?
-      expect(@user.errors.full_messages).to include('Family name kana is Full-width characters')
+      expect(@user.errors.full_messages).to include('苗字は全角カタカナで入力してください')
     end
 
     it 'first_name_kanaがないと保存できないこと' do
       @user.first_name_kana = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("First name kana can't be blank")
+      expect(@user.errors.full_messages).to include("名前は全角カタカナで入力してください")
     end
 
     it 'first_name_kanaが全角でないと保存できないこと' do
       @user.first_name_kana = 'ﾀﾛｳ'
       @user.valid?
-      expect(@user.errors.full_messages).to include('First name kana is Full-width characters')
+      expect(@user.errors.full_messages).to include('名前は全角カタカナで入力してください')
     end
 
     it 'birthdayが空だと保存できないこと' do
       @user.birthday = nil
       @user.valid?
-      expect(@user.errors.full_messages).to include("Birthday can't be blank")
+      expect(@user.errors.full_messages).to include("誕生日を入力してください")
     end
 
     it 'emailが@を含んでいる場合保存できること' do
